@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  analytics_engineering_demo:
+    image: brocolidata/analytics_engineering_demo
+    build: .
+    container_name: analytics_engineering_demo
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+    volumes:
+      - ./src/inform_risks:/dbt_project/inform_risks
+      - ./src/extract_load.py:/scripts/extract_load.py
+      - ./src/profiles:/root/.dbt
+      - ./source_data:/source_data
+      - dwh_data:/var/lib/postgresql/data
+    working_dir: /dbt_project/inform_risks
+    stdin_open: true
+    tty: true
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+
+volumes:
+  dwh_data:

@@ -1,0 +1,16 @@
+{
+  "name": "Analytics Engineering Demo",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "analytics_engineering_demo",
+  "workspaceFolder": "/dbt_project/inform_risks",
+  "shutdownAction": "stopCompose",
+  "extensions": [
+	  "innoverio.vscode-dbt-power-user",
+	  "ckolkman.vscode-postgres"
+],
+  "settings": {
+    "files.associations": {
+      "*.sql": "jinja-sql"
+    }
+  }
+}
