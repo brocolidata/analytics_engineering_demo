@@ -12,6 +12,7 @@ A Postgres + dbt setup for demonstration purposes
 2. Duplicate the `.env.example` , rename it to `.env` and replace dummy values with yours
 3. Click on *Open a Remote Window* button (left-down corner) & select **Reopen in Container**
 4. Wait while your Development Environment is being built (it may take some time)
+5. See [Inform dbt project](src/inform_risks/README.md) to start using the project.
 
 ## Project structure
 ```
@@ -42,5 +43,3 @@ A Postgres + dbt setup for demonstration purposes
     └── profiles
         └── profiles.yml        # dbt connection profile to the database
 ```
-
-[def]: https://www.entechlog.com/images/blog/data/configure-dbt-for-postgres/01_hu42dc3e98dc978ed7da922474cdf63e17_32874_e42c87427412a5022aa4353ff1a512af.webp
