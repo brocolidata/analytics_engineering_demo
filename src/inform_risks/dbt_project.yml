@@ -34,5 +34,19 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   inform_risks:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    stg:
       +materialized: view
+      +schema: stg
+    ods:
+      +materialized: table
+      +schema: ods
+    prs:
+      +materialized: table
+      general:
+        +schema: general
+      hazard_exposure:
+        +schema: hazard_exposure
+      vulnerability:
+        +schema: vulnerability
+      lack_of_coping_capacity:
+        +schema: lack_of_coping_capacity
