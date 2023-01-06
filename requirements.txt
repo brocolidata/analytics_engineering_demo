@@ -1,4 +1,4 @@
-dbt-core
+dbt-postgres
 pandas 
 pyarrow
 SQLAlchemy
