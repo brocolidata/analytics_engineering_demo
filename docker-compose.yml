@@ -7,9 +7,9 @@ services:
     build: .
     container_name: analytics_engineering_demo
     environment:
-      POSTGRES_USER: $POSTGRES_USER
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: ${POSTGRES_USER:-exampleuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Examplepassword}
+      POSTGRES_DB: ${POSTGRES_DB:-dwh_db}
     volumes:
       - ./src/inform_risks:/dbt_project/inform_risks
       - ./src/extract_load.py:/scripts/extract_load.py
@@ -25,9 +25,9 @@ services:
     container_name: postgres
     restart: always
     environment:
-      POSTGRES_USER: $POSTGRES_USER
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
-      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_USER: ${POSTGRES_USER:-exampleuser}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Examplepassword}
+      POSTGRES_DB: ${POSTGRES_DB:-dwh_db}
 
 volumes:
   dwh_data:
