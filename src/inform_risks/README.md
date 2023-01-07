@@ -23,9 +23,12 @@ The data is stored in a **PostgreSQL** Data Warehouse.
 
 
 ## Loading the data
-The data is located in the `inform_trends.parquet` file. The data in this file is loaded using a Python script. 
+The data is located in the `source_data` folder. It contains : 
+- `inform_trends.parquet` : [Inform Trend 2013-2022](https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data/moduleId/1782/id/453/controller/Admin/action/Results) converted to `.parquet` format.
 
-The data in the DataWarehouse is persisted in a volume, so you only need to Extract/Load data when you first initialize this project.
+The data is loaded using a Python script :[extract_load.py](/src/extract_load.py). 
+
+Once the data is loaded in the DataWarehouse, it is persisted in a volume, so you only need to Extract/Load data when you first initialize this project.
 
 To run the **Extract/Load** script, run
 ```
@@ -33,7 +36,7 @@ python3 /scripts/extract_load.py
 ```
 
 ## Visualise Data stored in the DataWarehouse
-We are using the PostgreSQL VSCode extension to see tables in the DataWarehouse. To use it you must connect the extension to the database.
+We are using the [PostgreSQL VSCode extension](https://marketplace.visualstudio.com/items?itemName=ckolkman.vscode-postgres) to see tables in the DataWarehouse. To use it you must connect the extension to the database.
 
 The extension will ask you for the following information
 - **the hostname of the database** : `postgres`
