@@ -26,7 +26,7 @@ The data is stored in a **PostgreSQL** Data Warehouse.
 The data is located in the `source_data` folder. It contains : 
 - `inform_trends.parquet` : [Inform Trend 2013-2022](https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data/moduleId/1782/id/453/controller/Admin/action/Results) converted to `.parquet` format.
 
-The data is loaded using a Python script :[extract_load.py](/src/extract_load.py). 
+The data is loaded using a Python script :[`extract_load.py`](/src/extract_load.py). 
 
 Once the data is loaded in the DataWarehouse, it is persisted in a volume, so you only need to Extract/Load data when you first initialize this project.
 
@@ -65,33 +65,37 @@ The DataWarehouse is composed of several schemas, representing the steps in the 
 ### Sources in `raw`
 A `.yml` file must be created in the `/models/raw` folder. It contains a `source` definition, describing a source table in the `raw` schema of the DataWarehouse.
 
+You don't have to write its content, you can  [Generate Sources descriptions `.yaml`](#generate-sources-descriptions-yaml)
+
 ### Staging tables in `stg`
 Once you defined [Sources in `raw`](#sources-in-raw) :
 1. Create a `.sql` file in the `/models/stg` folder. In this file, write a SQL query on a source table in order to **Rename** & **Recast** columns.
 2. Run the dbt model to create the table in the Data Warehouse.
-3. (optional) [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files) 
+3. [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
 
 ### Dimensions & Facts tables in `ods`
 Once you [Staged tables in `stg`](#staging-tables-in-stg) :
 1. Create a `.sql` file in the `/models/ods` folder. In this file, write a SQL query on `stg` tables in order to create a functional entity.
 2. Run the dbt model to create the table in the Data Warehouse.
-3. (optional) [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
+3. [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
 
 ### Wide tables in `prs`
 Once you created [Dimensions & Facts tables in `ods`](#dimensions--facts-tables-in-ods) :
 1. Create a `.sql` file in the `/models/prs/...` folder (see the 4th points in [DataWarehouse Layers](#datawarehouse-layers)). In this file, write a SQL query on `ods` tables in order to create a Wide table with all information you need from Dimension & Fact tables.
 2. Run the dbt model to create the table in the Data Warehouse.
-3. (optional) [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
+3. [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
 
 ## Manage the dbt project
 
 ### dbt settings
-All settings are described in the [dbt_project.yml](dbt_project.yml).
+All settings are described in the [`dbt_project.yml`](dbt_project.yml).
 A lot of them are set automatically by dbt, except the `Models configuration` section which defines the Materialization (`table`,`view`,...) and the schema (`stg`, `ods`, `prs`) for a model.
+
+See [dbt documentation on `dbt_project.yml`](https://docs.getdbt.com/reference/dbt_project.yml)
 
 ### dbt dependencies
 dbt relies on packages to work (for instance `dbt-codegen` to generate code).
-The packages are defined in `packages.yml`.
+The packages are defined in [`packages.yml`](packages.yml).
 
 To install dbt dependencies, run
 ```
@@ -108,12 +112,15 @@ Run the following code to generate the dbt Source definition of a table *(replac
 dbt run-operation generate_source --args '{"schema_name": "raw", "generate_columns": "true", "include_descriptions":"true", "table_names":["SOURCE_NAME"]}'
 ```
 
+See [dbt documentation on sources](https://docs.getdbt.com/docs/build/sources).
 
 ### (Optional) Describe dbt tables with `.yml` files
 Run the following code in the terminal to generate the content of the `.yml` file for a table *(replace `TABLE_NAME` by the name of your model)*
 ```
 dbt run-operation generate_model_yaml --args '{"model_names": ["TABLE_NAME"], "upstream_descriptions":"true"}'
 ```
+
+See [dbt documentation on Model properties](https://docs.getdbt.com/reference/model-properties)
 
 
 ## Useful Resources:
