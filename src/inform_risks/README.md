@@ -89,7 +89,7 @@ Once you created [Dimensions & Facts tables in `ods`](#dimensions--facts-tables-
 
 ### dbt settings
 All settings are described in the [`dbt_project.yml`](dbt_project.yml).
-A lot of them are set automatically by dbt, except the `Models configuration` section which defines the Materialization (`table`,`view`,...) and the schema (`stg`, `ods`, `prs`) for a model.
+A lot of them are set automatically by dbt, except the `Models configuration` section which defines the Materialization (`table`,`view`,...) and the schema (`stg`, `ods`, `prs`) for dbt models depending on their location the `/models` folder.
 
 See [dbt documentation on `dbt_project.yml`](https://docs.getdbt.com/reference/dbt_project.yml)
 
