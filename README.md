@@ -6,6 +6,10 @@ A Postgres + dbt setup for demonstration purposes
 - **Docker** (started) and docker-compose (just install Docker for Desktop if you are on laptop) 
 - **VS Code** + VS Code extension [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) 
 
+**OR**
+
+Just run it in [GitHub Codespaces](https://github.com/features/codespaces)
+
 
 ## Quickstart
 1. Clone repo
