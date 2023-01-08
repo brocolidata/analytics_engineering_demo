@@ -53,3 +53,4 @@ if __name__ == '__main__':
     for file_to_load in files_iterator:
         files_iterator.set_description(f'Loading {file_to_load.stem} ..')
         extract_load(engine, file_to_load)
+    print('Successfully created all tables in DataWarehouse')
