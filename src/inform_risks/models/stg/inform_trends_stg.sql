@@ -1,5 +1,5 @@
 with source as (
-      select * from {{ source('inform', 'raw_inform_data') }}
+      select * from {{ source('inform', 'inform_trends') }}
 ),
 renamed as (
     select

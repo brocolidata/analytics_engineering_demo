@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: inform_trends_stg
+    description: >
+      L'indice de risque global INFORM identifie les pays à risque de crises humanitaires 
+      et de catastrophes qui pourraient dépasser la capacité de réponse nationale. 
+
+      Il se compose de trois dimensions 
+      - les dangers et l'exposition 
+      - la vulnérabilité
+      - le manque de capacité d'adaptation.
+
+    columns:
+      - name: code_pays_iso3
+        description: "Code ISO3 du pays"
+
+      - name: annee
+        description: "Année du Score de l'Indicateur"
+
+      - name: type_indicateur
+        description: "Type d'indicateur"
+
+      - name: id_indicateur
+        description: "Identifiant Unique de l'indicateur"
+
+      - name: nom_indicateur
+        description: "Nom de l'indicateur"
+
+      - name: score_indicateur
+        description: "Score de l'indicateur"

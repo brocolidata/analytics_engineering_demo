@@ -3,20 +3,26 @@ version: 2
 sources:
   - name: inform
     description: >
-      L'indice de risque global INFORM identifie les pays à risque de crises humanitaires 
-      et de catastrophes qui pourraient dépasser la capacité de réponse nationale. 
-
-      Il se compose de trois dimensions 
-      - les dangers et l'exposition 
-      - la vulnérabilité
-      - le manque de capacité d'adaptation.
+      INFORM est une collaboration du Groupe de référence du Comité permanent inter-agences sur les risques, 
+      l'alerte précoce et la préparation et la Commission européenne.
+      
+      L'indice de risque INFORM est une évaluation mondiale et open source des risques pour les crises humanitaires et les catastrophes. 
+      Il peut appuyer les décisions en matière de prévention, de préparation et d'intervention.
 
       Source : [DRMKC INFORM](https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data/moduleId/1782/id/453/controller/Admin/action/Results)
 
+
     schema: raw
     tables:
-      - name: raw_inform_data
-        description: ""
+      - name: inform_trends
+        description: >
+          L'indice de risque global INFORM identifie les pays à risque de crises humanitaires 
+          et de catastrophes qui pourraient dépasser la capacité de réponse nationale. 
+
+          Il se compose de trois dimensions 
+          - les dangers et l'exposition 
+          - la vulnérabilité
+          - le manque de capacité d'adaptation.
         columns:
           - name: iso3
             description: "Code ISO3 du pays"
