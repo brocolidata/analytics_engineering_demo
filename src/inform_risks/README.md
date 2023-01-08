@@ -17,7 +17,8 @@ The data is stored in a **PostgreSQL** Data Warehouse.
     + [dbt settings](#dbt-settings)
     + [dbt dependencies](#dbt-dependencies)
     + [Generate Sources descriptions `.yaml`](#generate-sources-descriptions-yaml)
-    + [(Optional) Describe dbt tables with `.yml` files](#-optional--describe-dbt-tables-with--yml--files)
+    + [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
+    + [Access Data Catalog](#optional-describe-dbt-tables-with-yml-files)
     
 * [Useful Resources:](#useful-resources-)
 
@@ -128,6 +129,17 @@ If you need to merge what has been generated with an existing file, make sure yo
 
 See [dbt documentation on Model properties](https://docs.getdbt.com/reference/model-properties)
 
+
+### Access Data Catalog
+1. Generate assets for the website :
+```
+dbt docs generate
+```
+2. Run the website server :
+```
+dbt docs serve
+```
+3. Access the website with the VSCode pop-up
 
 ## Useful Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
