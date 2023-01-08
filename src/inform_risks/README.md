@@ -25,6 +25,8 @@ The data is stored in a **PostgreSQL** Data Warehouse.
 ## Loading the data
 The data is located in the `source_data` folder. It contains : 
 - `inform_trends.parquet` : [Inform Trend 2013-2022](https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data/moduleId/1782/id/453/controller/Admin/action/Results) converted to `.parquet` format.
+- `inform_countries.parquet` [INFORM `/Countries/Index` API endpoint](https://drmkc.jrc.ec.europa.eu/inform-index/API/InformAPI/Countries/Index) converted to `.parquet` format.
+- `inform_indicators.parquet` [INFORM `/Indicators/Index` API endpoint](https://drmkc.jrc.ec.europa.eu/inform-index/API/InformAPI/Indicators/Index) converted to `.parquet` format.
 
 The data is loaded using a Python script :[`extract_load.py`](/src/extract_load.py). This script will load in the DataWarehouse all `.parqet` & `.csv` files located in the `/source_data` folder.
 

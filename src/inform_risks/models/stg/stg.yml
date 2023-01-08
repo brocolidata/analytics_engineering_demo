@@ -12,8 +12,8 @@ models:
       - le manque de capacité d'adaptation.
 
     columns:
-      - name: code_pays_iso3
-        description: "Code ISO3 du pays"
+      - name: code_iso3
+        description: "Code ISO3 de la zone géographique concernée par le score de l'indicateur"
 
       - name: annee
         description: "Année du Score de l'Indicateur"
@@ -29,3 +29,26 @@ models:
 
       - name: score_indicateur
         description: "Score de l'indicateur"
+
+  - name: inform_countries_stg
+    description: "Zones géographiques d'INFORM"
+    columns:
+      - name: type_zone_geo
+        description: >
+          Hiérarchie géographique.
+
+          ADMIN     = Région du monde
+          ADMIN0    = Pays
+          ADMIN1    = Région d'un pays
+          REGION_0  = Valeurs diverses (à retirer)
+          REGION_1  = Départements divers (à retirer)
+          REGION_2  = Municipalités
+
+      - name: code_iso3
+        description: "Code ISO3 (identifiant unique) de la zone géographique"
+
+      - name: nom_zone_geo
+        description: "Nom de la zone géographique"
+
+      - name: parent_zone_geo
+        description: "Parent de la zone géographique"
