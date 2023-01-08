@@ -45,14 +45,19 @@ sources:
             description: "Continent de la zone géographique (à retirer car vide)"
           - name: categorytype
             description: >
-              Hiérarchie géographique.
+              Hiérarchie géographique. Correspondances des valeurs : 
+                
+              - ADMIN    : Région du monde
 
-              ADMIN     = Région du monde
-              ADMIN0    = Pays
-              ADMIN1    = Région d'un pays
-              REGION_0  = Valeurs diverses (à retirer)
-              REGION_1  = Départements divers (à retirer)
-              REGION_2  = Municipalités
+              - ADMIN0   : Pays
+
+              - ADMIN1   : Région d'un pays
+
+              - REGION_0 : Valeurs diverses (à retirer)
+
+              - REGION_1 : Départements divers (à retirer)
+
+              - REGION_2 : Municipalités
           - name: adminlevel
             description: "Niveau administratif (à retirer car vide)"
           - name: categoryinfo
