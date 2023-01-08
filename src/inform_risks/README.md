@@ -16,7 +16,7 @@ The data is stored in a **PostgreSQL** Data Warehouse.
 * [Manage the dbt project](#manage-the-dbt-project)
     + [dbt settings](#dbt-settings)
     + [dbt dependencies](#dbt-dependencies)
-    + [Generate Sources descriptions `.yaml`](#generate-sources-descriptions--yaml-)
+    + [Generate Sources descriptions `.yaml`](#generate-sources-descriptions-yaml)
     + [(Optional) Describe dbt tables with `.yml` files](#-optional--describe-dbt-tables-with--yml--files)
     
 * [Useful Resources:](#useful-resources-)
