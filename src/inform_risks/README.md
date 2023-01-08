@@ -25,8 +25,10 @@ The data is stored in a **PostgreSQL** Data Warehouse.
 ## Loading the data
 The data is located in the `source_data` folder. It contains : 
 - `inform_trends.parquet` : [Inform Trend 2013-2022](https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Results-and-data/moduleId/1782/id/453/controller/Admin/action/Results) converted to `.parquet` format.
+- `inform_countries.parquet` [INFORM `/Countries/Index` API endpoint](https://drmkc.jrc.ec.europa.eu/inform-index/API/InformAPI/Countries/Index) converted to `.parquet` format.
+- `inform_indicators.parquet` [INFORM `/Indicators/Index` API endpoint](https://drmkc.jrc.ec.europa.eu/inform-index/API/InformAPI/Indicators/Index) converted to `.parquet` format.
 
-The data is loaded using a Python script :[`extract_load.py`](/src/extract_load.py). 
+The data is loaded using a Python script :[`extract_load.py`](/src/extract_load.py). This script will load in the DataWarehouse all `.parqet` & `.csv` files located in the `/source_data` folder.
 
 Once the data is loaded in the DataWarehouse, it is persisted in a volume, so you only need to Extract/Load data when you first initialize this project.
 
@@ -109,8 +111,10 @@ For this to work :
 
 Run the following code to generate the dbt Source definition of a table *(replace `SOURCE_NAME` by the name of your source table)*
 ```
-dbt run-operation generate_source --args '{"schema_name": "raw", "generate_columns": "true", "include_descriptions":"true", "table_names":["SOURCE_NAME"]}'
+dbt run-operation generate_source --args '{"schema_name": "raw", "generate_columns": "true", "include_descriptions":"true", "table_names":["SOURCE__TABLE_NAME"], "name":"inform"}'
 ```
+
+If you need to merge what has been generated with an existing file, make sure you don't repeat the fields like `version:` and `sources:`
 
 See [dbt documentation on sources](https://docs.getdbt.com/docs/build/sources).
 
@@ -119,6 +123,8 @@ Run the following code in the terminal to generate the content of the `.yml` fil
 ```
 dbt run-operation generate_model_yaml --args '{"model_names": ["TABLE_NAME"], "upstream_descriptions":"true"}'
 ```
+
+If you need to merge what has been generated with an existing file, make sure you don't repeat the fields like `version:` and `models:`
 
 See [dbt documentation on Model properties](https://docs.getdbt.com/reference/model-properties)
 

@@ -25,7 +25,7 @@ sources:
           - le manque de capacité d'adaptation.
         columns:
           - name: iso3
-            description: "Code ISO3 du pays"
+            description: "Code ISO3 (identifiant unique) de la zone géographique concernée par le score de l'indicateur"
           - name: indicatorid
             description: "Identifiant Unique de l'indicateur"
           - name: indicatorname
@@ -38,3 +38,32 @@ sources:
             description: "Type d'indicateur"
           - name: informyear
             description: "Année du Score de l'Indicateur"
+      - name: inform_countries
+        description: "Zones géographiques d'INFORM"
+        columns:
+          - name: continent
+            description: "Continent de la zone géographique (à retirer car vide)"
+          - name: categorytype
+            description: >
+              Hiérarchie géographique.
+
+              ADMIN     = Région du monde
+              ADMIN0    = Pays
+              ADMIN1    = Région d'un pays
+              REGION_0  = Valeurs diverses (à retirer)
+              REGION_1  = Départements divers (à retirer)
+              REGION_2  = Municipalités
+          - name: adminlevel
+            description: "Niveau administratif (à retirer car vide)"
+          - name: categoryinfo
+            description: "Informations sur la catégorie (à retirer car peu utile)"
+          - name: incomevalue
+            description: "Niveau de revenu du pays (à retirer car vide)"
+          - name: notes
+            description: "Notes sur le pays (à retirer car vide)"
+          - name: iso3
+            description: "Code ISO3 (identifiant unique) de la zone géographique"
+          - name: countryname
+            description: "Nom de la zone géographique"
+          - name: isogroup
+            description: "Parent de la zone géographique"

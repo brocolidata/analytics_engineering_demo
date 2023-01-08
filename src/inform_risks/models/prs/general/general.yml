@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: risk_index
+    description: >
+      INFORM Risk Index : est un score composite (0-10) de trois dimensions d'INFORM, 
+      à savoir le danger et l'exposition, la vulnérabilité et le manque de capacité d'adaptation, 
+      agrégés à l'aide d'un opérateur de moyenne géométrique.
+    columns:
+      - name: code_iso3
+        description: "Code ISO3 (identifiant unique) de la zone géographique"
+
+      - name: annee
+        description: "Année du Score de l'Indicateur"
+
+      - name: type_indicateur
+        description: "Type d'indicateur"
+
+      - name: id_indicateur
+        description: "Identifiant Unique de l'indicateur"
+
+      - name: nom_indicateur
+        description: "Nom de l'indicateur"
+
+      - name: score_indicateur
+        description: "Score de l'indicateur"
+
+      - name: nom_zone_geo
+        description: "Nom de la zone géographique"
+
+      - name: parent_zone_geo
+        description: "Parent de la zone géographique"

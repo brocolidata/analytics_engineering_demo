@@ -3,7 +3,7 @@ with source as (
 ),
 renamed as (
     select
-        cast("Iso3" as {{ dbt.type_string() }}) as code_pays_iso3,
+        cast("Iso3" as {{ dbt.type_string() }}) as code_iso3,
         cast("INFORMYear" as {{ dbt.type_int() }}) as annee,
         cast("Indicator Type" as {{ dbt.type_string() }}) as type_indicateur,
         cast("IndicatorId" as {{ dbt.type_string() }} ) as id_indicateur,
