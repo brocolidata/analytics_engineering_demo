@@ -3,3 +3,4 @@ pandas
 pyarrow
 SQLAlchemy
 psycopg2-binary
+tqdm
