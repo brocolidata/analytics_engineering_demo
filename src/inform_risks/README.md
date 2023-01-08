@@ -111,8 +111,10 @@ For this to work :
 
 Run the following code to generate the dbt Source definition of a table *(replace `SOURCE_NAME` by the name of your source table)*
 ```
-dbt run-operation generate_source --args '{"schema_name": "raw", "generate_columns": "true", "include_descriptions":"true", "table_names":["SOURCE_NAME"]}'
+dbt run-operation generate_source --args '{"schema_name": "raw", "generate_columns": "true", "include_descriptions":"true", "table_names":["SOURCE__TABLE_NAME"], "name":"inform"}'
 ```
+
+If you need to merge what has been generated with an existing file, make sure you don't repeat the fields like `version:` and `sources:`
 
 See [dbt documentation on sources](https://docs.getdbt.com/docs/build/sources).
 
@@ -121,6 +123,8 @@ Run the following code in the terminal to generate the content of the `.yml` fil
 ```
 dbt run-operation generate_model_yaml --args '{"model_names": ["TABLE_NAME"], "upstream_descriptions":"true"}'
 ```
+
+If you need to merge what has been generated with an existing file, make sure you don't repeat the fields like `version:` and `models:`
 
 See [dbt documentation on Model properties](https://docs.getdbt.com/reference/model-properties)
 
