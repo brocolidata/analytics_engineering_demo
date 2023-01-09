@@ -15,7 +15,6 @@ services:
       - ./src/extract_load.py:/scripts/extract_load.py
       - ./src/profiles:/root/.dbt
       - ./source_data:/source_data
-      - dwh_data:/var/lib/postgresql/data
     working_dir: /dbt_project/inform_risks
     stdin_open: true
     tty: true
@@ -28,6 +27,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-exampleuser}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Examplepassword}
       POSTGRES_DB: ${POSTGRES_DB:-dwh_db}
+    volumes:
+      - dwh_data:/var/lib/postgresql/data
 
 volumes:
   dwh_data:
