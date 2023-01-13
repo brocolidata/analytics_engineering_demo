@@ -35,9 +35,9 @@ def extract_load(engine, file_to_load):
     )
 
 
-def get_files_to_EL(data_folder="/source_data"):
+def get_files_to_EL(data_folder="/AE_demo/source_data"):
     ls_files = []
-    for data_file in os.listdir('/source_data'):
+    for data_file in os.listdir(data_folder):
         file_path = pathlib.Path(data_folder, data_file)
         ls_files.append(file_path)
     return ls_files

@@ -1,8 +1,8 @@
 {
   "name": "Analytics Engineering Demo",
-  "dockerComposeFile": "../docker-compose.yml",
+  "dockerComposeFile": "../docker/docker-compose.yml",
   "service": "analytics_engineering_demo",
-  "workspaceFolder": "/dbt_project/inform_risks",
+  "workspaceFolder": "/AE_demo/src/inform_risks",
   "shutdownAction": "stopCompose",
   "extensions": [
 	  "innoverio.vscode-dbt-power-user",

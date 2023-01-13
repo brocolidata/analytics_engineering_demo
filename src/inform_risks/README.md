@@ -35,7 +35,7 @@ Once the data is loaded in the DataWarehouse, it is persisted in a volume, so yo
 
 To run the **Extract/Load** script, run
 ```
-python3 /scripts/extract_load.py
+python3 /AE_demo/src/extract_load.py
 ```
 
 ## Visualise Data stored in the DataWarehouse
