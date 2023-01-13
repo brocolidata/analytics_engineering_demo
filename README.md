@@ -22,29 +22,33 @@ This project is fully compatible with [GitHub Codespaces](https://github.com/fea
 ## Project structure
 ```
 .
-├── .devcontainer              
-│   └── devcontainer.json      # Dev Container settings
-├── .env                       # Secret environment variables (filled)
-├── .env.example               # Example of secret environment variables
-├── Dockerfile                  # Docker Image settings
-├── README.md                
-├── docker-compose.yml         # Docker Container settings
-├── requirements.txt           # Python dependencies
-├── source_data                # Data folder (source data)
+├── .devcontainer
+│   └── devcontainer.json             # Dev Container settings
+├── docker
+│   ├── .env                          # Secret environment variables (filled)
+│   ├── .env.example                  # Example of secret environment variables
+│   ├── Dockerfile                     # Docker Image settings
+│   ├── docker-compose.yml            # Docker Container settings
+│   └── requirements.txt              # Python dependencies
+├── source_data                       # Data folder (source data)
+│   ├── inform_countries.parquet
+│   ├── inform_indicators.parquet
 │   └── inform_trends.parquet
-└── src
-    ├── extract_load.py        # Extract/Load python script
-    ├── inform_risks           # dbt project folder
-    │   ├── .gitignore
-    │   ├── README.md
-    │   ├── dbt_packages       # dbt packages
-    │   ├── dbt_project.yml    # dbt project settings
-    │   ├── logs               # dbt logs
-    │   ├── macros             # dbt macros
-    │   ├── models             # dbt models
-    │   ├── packages.yml       # dbt dependencies
-    │   ├── seeds              # dbt static data
-    │   └── target             # Where dbt store compiled code
-    └── profiles
-        └── profiles.yml        # dbt connection profile to the database
+├── src
+│   ├── extract_load.py               # Extract/Load python script
+│   ├── inform_risks                  # dbt project folder
+│   │   ├── .gitignore
+│   │   ├── README.md
+│   │   ├── dbt_packages              # dbt packages
+│   │   ├── dbt_project.yml           # dbt project settings
+│   │   ├── logs                      # dbt logs
+│   │   ├── macros                    # dbt macros
+│   │   ├── models                    # dbt models
+│   │   ├── packages.yml              # dbt dependencies
+│   │   ├── seeds                     # dbt static data (not used)
+│   │   └── target                    # where dbt stores compiled code
+│   └── profiles            
+│       └── profiles.yml               # dbt connection profile to the database
+├── .gitignore                        # tell git to ignore some files
+└── README.md                         # documentation
 ```
