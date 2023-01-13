@@ -8,14 +8,12 @@ services:
     container_name: analytics_engineering_demo
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-exampleuser}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-Examplepassword}
+      POSTGRES_PASSWORD: ${POSTGRESz_PASSWORD:-Examplepassword}
       POSTGRES_DB: ${POSTGRES_DB:-dwh_db}
+      DBT_PROFILES_DIR: /AE_demo/src/profiles
     volumes:
-      - ./src/inform_risks:/dbt_project/inform_risks
-      - ./src/extract_load.py:/scripts/extract_load.py
-      - ./src/profiles:/root/.dbt
-      - ./source_data:/source_data
-    working_dir: /dbt_project/inform_risks
+      - ../:/AE_demo
+    working_dir: /AE_demo
     stdin_open: true
     tty: true
 
