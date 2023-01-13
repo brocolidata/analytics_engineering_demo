@@ -14,7 +14,7 @@ This project is fully compatible with [GitHub Codespaces](https://github.com/fea
 
 ## Quickstart
 1. Clone repo
-2. Duplicate the `.env.example` , rename it to `.env` and replace dummy values with yours
+2. In the `/docker` folder, duplicate the `.env.example` , rename it to `.env` and replace dummy values with yours
 3. Click on *Open a Remote Window* button (left-down corner) & select **Reopen in Container**
 4. Wait while your Development Environment is being built (it may take some time)
 5. See [Inform dbt project](src/inform_risks/README.md) to start using the project.
