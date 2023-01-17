@@ -27,7 +27,7 @@ This project is fully compatible with [GitHub Codespaces](https://github.com/fea
 ├── docker
 │   ├── .env                          # Secret environment variables (filled)
 │   ├── .env.example                  # Example of secret environment variables
-│   ├── Dockerfile                     # Docker Image settings
+│   ├── Dockerfile                    # Docker Image settings
 │   ├── docker-compose.yml            # Docker Container settings
 │   └── requirements.txt              # Python dependencies
 ├── source_data                       # Data folder (source data)
@@ -48,7 +48,7 @@ This project is fully compatible with [GitHub Codespaces](https://github.com/fea
 │   │   ├── seeds                     # dbt static data (not used)
 │   │   └── target                    # where dbt stores compiled code
 │   └── profiles            
-│       └── profiles.yml               # dbt connection profile to the database
+│       └── profiles.yml              # dbt connection profile to the database
 ├── .gitignore                        # tell git to ignore some files
 └── README.md                         # documentation
 ```
