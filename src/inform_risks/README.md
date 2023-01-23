@@ -5,6 +5,7 @@ This project uses dbt to transform data coming from [INFORM Risk](https://drmkc.
 The data is stored in a **PostgreSQL** Data Warehouse.
 
 ## Contents
+* [Workflow](#workflow)
 * [Loading the data](#loading-the-data)
 * [Visualise Data stored in the DataWarehouse](#visualise-data-stored-in-the-datawarehouse)
 * [DataWarehouse layers](#datawarehouse-layers)
@@ -22,6 +23,38 @@ The data is stored in a **PostgreSQL** Data Warehouse.
     
 * [Useful Resources:](#useful-resources-)
 
+## Workflow
+```mermaid
+graph LR
+
+subgraph workflow
+    direction LR
+    subgraph EL[Extract & Load]
+        elscript[extract_load.py]
+    end
+
+    subgraph TRANS[Transform]
+        dbt[dbt]
+    end
+
+    subgraph Ana[Analyze]
+        DV[a Data Viz tool]
+    end
+
+end
+
+EL --> TRANS --> Ana
+
+subgraph tools
+datasource[(Data Source)]
+DWH[(DataWarehouse)]
+dashboard[Dashbaord]
+end
+
+datasource --extract --> EL -- load --> DWH
+DWH <--transform--> dbt
+DWH --analyze --> dashboard
+```
 
 ## Loading the data
 The data is located in the `source_data` folder. It contains : 
@@ -52,7 +85,47 @@ The extension will ask you for the following information
 
 ## DataWarehouse layers
 
-The DataWarehouse is composed of several schemas, representing the steps in the transformation workflow :
+In **dbt** :
+- we define raw data in sources `.yml` files 
+- we write queries in `.sql` files
+
+When we run dbt, it creates tables in the **DataWarehouse**.
+
+The DataWarehouse is composed of several schemas, mapped to the subfolder structure of the `models` folder.
+The schemas/subfolders represent the steps in the transformation workflow :
+
+```mermaid
+graph LR
+subgraph DataWarehouse
+    direction TB
+    rawdb[(raw)]
+    stgdb[(stg)]
+    odsdb[(ods)]
+    subgraph prs 
+        direction LR
+        generaldb[(general)]
+        hedb[(hazard_exposure)]
+    end
+    
+end
+
+subgraph dbt
+    direction LR
+    subgraph sources
+    end
+    subgraph models
+    direction LR
+    stg[stg]
+    ods[ods]
+    prs[prs]
+    stg --> ods --> prs
+    end
+    
+    sources --> stg
+end 
+
+```
+
 1. **raw** : Where raw data is located. dbt use *raw* tables as *dbt sources* to create *stg* dbt models. See [Sources in `raw`](#sources-in-raw).
 2. **stg** : Where data is **st**a**g**ed. We rename and recast sources columns. See [Staging tables in `stg`](#staging-tables-in-stg)
 3. **ods** : Where data is transformed into entities (dimensions & facts). See [Dimensions & Facts tables in `ods`](#dimensions--facts-tables-in-ods)
@@ -85,7 +158,7 @@ Once you [Staged tables in `stg`](#staging-tables-in-stg) :
 ### Wide tables in `prs`
 Once you created [Dimensions & Facts tables in `ods`](#dimensions--facts-tables-in-ods) :
 1. Create a `.sql` file in the `/models/prs/...` folder (see the 4th points in [DataWarehouse Layers](#datawarehouse-layers)). In this file, write a SQL query on `ods` tables in order to create a Wide table with all information you need from Dimension & Fact tables.
-2. Run the dbt model to create the table in the Data Warehouse.
+2. Run the dbt model to create the table in the DataWarehouse.
 3. [(Optional) Describe dbt tables with `.yml` files](#optional-describe-dbt-tables-with-yml-files)
 
 ## Manage the dbt project
